@@ -17,6 +17,7 @@ const dbConnection = require("./utils/db.util");
 
 /* router level imports */
 const jobRoute = require("./routes/job.route");
+const userRoute = require("./routes/user.route");
 
 /* application level connections */
 const app = express();
@@ -25,9 +26,11 @@ const port = process.env.PORT || 8080;
 /* middleware connections */
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 /* router level connections */
 app.use("/jobs", jobRoute);
+app.use("/user", userRoute);
 
 /* global error handler */
 app.use(errorHandler);
