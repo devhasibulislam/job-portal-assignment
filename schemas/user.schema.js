@@ -7,10 +7,11 @@
 
 /* external imports */
 const mongoose = require("mongoose");
+const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
 const validator = require("validator");
 
-const userSchema = mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     email: {
       type: String,
@@ -110,7 +111,18 @@ userSchema.post("save", async function (next) {
   }
 });
 
-const User = new mongoose.model("User", userSchema);
+userSchema.methods.generateConfirmationToken = function () {
+  const token = crypto.randomBytes(16).toString("hex");
+  this.confirmationToken = token;
+
+  const date = new Date();
+  date.setDate(date.getDate() + 1);
+  this.confirmationTokenExpires = date;
+
+  return token;
+};
+
+const User = new mongoose.model("Users", userSchema);
 module.exports = User;
 
 /**

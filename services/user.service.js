@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../schemas/user.schema");
 const { generateToken } = require("../utils/token.util");
 
-exports.registerAnUser = async (data) => {
+exports.registerAnUserService = async (data) => {
   const user = new User(data);
   const result = await user.save();
   return result;
@@ -33,6 +33,6 @@ exports.loginAnUser = async (data) => {
   }
 };
 
-exports.getMe = async(email) => {
-  return await User.findOne({email})
-}
+exports.getMe = async (email) => {
+  return await User.findOne({ email });
+};
