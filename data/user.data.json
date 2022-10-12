@@ -21,5 +21,13 @@
     "confirmPassword": "NipAa@94",
     "fullName": "Nipa Akter",
     "contactNumber": "01417123456"
+  },
+  {
+    "email": "admin@gmail.com",
+    "password": "AdmiN@01",
+    "confirmPassword": "AdmiN@01",
+    "role": "admin",
+    "fullName": "Programming Hero",
+    "contactNumber": "01309123456"
   }
 ]
