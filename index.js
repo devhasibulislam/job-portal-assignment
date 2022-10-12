@@ -4,3 +4,45 @@
  * Author: Hasibul Islam
  * Date: 12/10/2022
  */
+
+/* external imports */
+const express = require("express");
+const cors = require("cors");
+const colors = require("colors");
+require("dotenv").config();
+
+/* internal imports */
+const errorHandler = require("./middleware/error.middleware");
+const dbConnection = require("./utils/db.util");
+
+/* router level imports */
+
+/* application level connections */
+const app = express();
+const port = process.env.PORT || 8080;
+
+/* middleware connections */
+app.use(cors());
+app.use(express.json());
+
+/* router level connections */
+
+/* global error handler */
+app.use(errorHandler);
+
+/* database connection */
+dbConnection();
+
+/* enable backend connection */
+app.get("/", async (req, res) => {
+  res.status(200).json({
+    acknowledgement: true,
+    message: "OK",
+    description: "The request is OK",
+  });
+});
+
+/* enable server */
+app.listen(port, () => {
+  console.log(colors.green.italic(`Success: Listening on port ${port}`));
+});
