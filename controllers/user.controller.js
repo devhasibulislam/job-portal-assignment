@@ -40,16 +40,20 @@ exports.loginAnUser = async (req, res, next) => {
 
 exports.getMe = async (req, res) => {
   try {
-    const user = await userService.getMe(req.user.email);
+    const user = await userService.getMe(req?.user?.email);
 
     res.status(200).json({
-      status: "success",
+      acknowledgement: true,
+      message: "OK",
+      description: "Successfully find out existing user",
       data: user,
     });
   } catch (error) {
     res.status(500).json({
-      status: "fail",
-      error,
+      acknowledgement: false,
+      message: "Internal Server Error",
+      description:
+        "A generic error message, given when no more specific message is suitable",
     });
   }
 };
