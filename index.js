@@ -16,6 +16,7 @@ const errorHandler = require("./middleware/error.middleware");
 const dbConnection = require("./utils/db.util");
 
 /* router level imports */
+const jobRoute = require("./routes/job.route");
 
 /* application level connections */
 const app = express();
@@ -26,6 +27,7 @@ app.use(cors());
 app.use(express.json());
 
 /* router level connections */
+app.use("/jobs", jobRoute);
 
 /* global error handler */
 app.use(errorHandler);
@@ -44,5 +46,7 @@ app.get("/", async (req, res) => {
 
 /* enable server */
 app.listen(port, () => {
-  console.log(colors.green.italic.bold(`Success: Job portal connected on port ${port}`));
+  console.log(
+    colors.green.italic.bold(`Success: Job portal connected on port ${port}`)
+  );
 });
