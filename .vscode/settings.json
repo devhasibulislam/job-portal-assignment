@@ -1,5 +1,9 @@
 {
-  "cSpell.words": ["Hasib", "Hasibul"],
+  "cSpell.words": [
+    "Akter",
+    "Hasib",
+    "Hasibul"
+  ],
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -14,5 +18,6 @@
   },
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "editor.minimap.enabled": false
 }
