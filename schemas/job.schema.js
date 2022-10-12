@@ -47,17 +47,22 @@ const jobSchema = mongoose.Schema(
     },
     tags: [String],
 
-    // createdBy: {
-    //   role: {
-    //     type: String,
-    //     required: true,
-    //   },
-    //   id: {
-    //     type: ObjectId,
-    //     ref: "User",
-    //     required: true,
-    //   },
-    // },
+    createdBy: {
+      type: String,
+      enum: ["hiring-manager", "admin"],
+      default: "hiring-manager"
+    },
+
+    deadline: {
+      type: Date,
+      default: () => {
+        const date = new Date();
+        date.setDate(
+          date.getDate() + Math.floor(Math.random() * (7 - 1 + 1) + 1)
+        );
+        return date;
+      },
+    },
 
     createdAt: {
       type: Date,
