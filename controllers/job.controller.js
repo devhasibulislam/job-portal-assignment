@@ -30,20 +30,20 @@ exports.displayAllJobs = async (req, res, next) => {
   }
 };
 
-exports.displaySpecificJob = async(req, res, next) => {
-    try {
-        const result = await jobService.displaySpecificJob(req.params.id);
+exports.displaySpecificJob = async (req, res, next) => {
+  try {
+    const result = await jobService.displaySpecificJob(req.params.id);
 
-        res.status(200).json({
-            acknowledgement: true,
-            message: "OK",
-            description: "Fetching the specific job",
-            data: result
-        })
-    } catch (error) {
-        next(error);
-    }
-}
+    res.status(200).json({
+      acknowledgement: true,
+      message: "OK",
+      description: "Fetching the specific job",
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 exports.modifyExistingJobCredentials = async (req, res, next) => {
   try {
@@ -56,6 +56,25 @@ exports.modifyExistingJobCredentials = async (req, res, next) => {
       acknowledgement: true,
       message: "Accepted",
       description: "Existing product modified",
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.applyOnSpecificJobPost = async (req, res, next) => {
+  try {
+    const result = await jobService.applyOnSpecificJobPost(req.params.id);
+
+    if (result.acknowledgement) {
+      next();
+      res.json({
+        data: result,
+      });
+    }
+
+    res.json({
       data: result,
     });
   } catch (error) {
