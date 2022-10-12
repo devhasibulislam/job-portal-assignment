@@ -26,9 +26,9 @@ const userSchema = mongoose.Schema(
       validate: {
         validator: (value) =>
           validator.isStrongPassword(value, {
-            minLength: 6,
-            minUppercase: 2,
-            minLowercase: 3,
+            minLength: 5,
+            minUppercase: 1,
+            minLowercase: 1,
             minNumbers: 2,
             minSymbols: 1,
           }),
@@ -118,4 +118,5 @@ module.exports = User;
  * --------------
  * SadiA@01
  * HasiB@62
+ * Admin123#
  */
