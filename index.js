@@ -44,5 +44,5 @@ app.get("/", async (req, res) => {
 
 /* enable server */
 app.listen(port, () => {
-  console.log(colors.green.italic(`Success: Listening on port ${port}`));
+  console.log(colors.green.italic.bold(`Success: Job portal connected on port ${port}`));
 });

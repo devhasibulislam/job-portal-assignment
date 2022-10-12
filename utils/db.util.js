@@ -16,7 +16,7 @@ function dbConnection() {
       useNewUrlParser: true,
     })
     .then(() => {
-      console.log("Success: MongoDB connected with Mongoose".green.bold);
+      console.log("Success: MongoDB connected with Mongoose".green.bold.italic);
     })
     .catch((error) => console.log(`Error: ${error.name}`.error.bold));
 }
