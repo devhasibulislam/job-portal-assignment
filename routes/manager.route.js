@@ -8,7 +8,7 @@ const router = express.Router();
 router.get(
   "/jobs",
   verifyToken,
-  authorization("hiring-manager"),
+  authorization("hiring-manager", "admin"),
   jobsController.getAllJobs
 );
 router.get("/jobs/:id", jobsController.getSpecificJob);
