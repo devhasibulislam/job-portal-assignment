@@ -9,7 +9,6 @@
   "repository": "https://github.com/hasibulislam999/job-portal-assignment",
   "author": "Hasibul Islam",
   "license": "MIT",
-  "private": true,
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
