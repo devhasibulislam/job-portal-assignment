@@ -71,9 +71,6 @@ const userSchema = new mongoose.Schema(
       default: "inactive",
     },
 
-    confirmationToken: String,
-    confirmationTokenExpires: Date,
-
     createdAt: {
       type: Date,
       default: Date.now,
@@ -110,17 +107,6 @@ userSchema.post("save", async function (next) {
     next(error);
   }
 });
-
-userSchema.methods.generateConfirmationToken = function () {
-  const token = crypto.randomBytes(16).toString("hex");
-  this.confirmationToken = token;
-
-  const date = new Date();
-  date.setDate(date.getDate() + 1);
-  this.confirmationTokenExpires = date;
-
-  return token;
-};
 
 const User = new mongoose.model("Users", userSchema);
 module.exports = User;
