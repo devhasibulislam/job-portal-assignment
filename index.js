@@ -8,12 +8,19 @@
 /* external imports */
 const express = require("express");
 const cors = require("cors");
+const mongoose = require("mongoose");
 const colors = require("colors");
 require("dotenv").config();
 
 /* internal imports */
 const errorHandler = require("./middleware/error.middleware");
 const dbConnection = require("./utils/db.util");
+
+/* custom colors setup */
+colors.setTheme({
+  success: "green",
+  error: "red",
+});
 
 /* router level imports */
 const jobRoute = require("./routes/job.route");
@@ -38,7 +45,17 @@ app.use("/manager", managerRoute);
 app.use(errorHandler);
 
 /* database connection */
-dbConnection();
+// dbConnection();
+mongoose
+  .connect(process.env.DB_URI, {
+    dbName: "job-portal-assignment",
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  })
+  .then(() => {
+    console.log("Success: MongoDB connected with Mongoose".green.bold.italic);
+  })
+  .catch((error) => console.log(`Error: ${error.name}`.error.bold));
 
 /* enable backend connection */
 app.get("/", async (req, res) => {
