@@ -18,6 +18,7 @@ const dbConnection = require("./utils/db.util");
 /* router level imports */
 const jobRoute = require("./routes/job.route");
 const userRoute = require("./routes/user.route");
+const managerRoute = require("./routes/manager.route");
 
 /* application level connections */
 const app = express();
@@ -31,6 +32,7 @@ app.use(express.urlencoded({ extended: false }));
 /* router level connections */
 app.use("/jobs", jobRoute);
 app.use("/user", userRoute);
+app.use("/manager", managerRoute);
 
 /* global error handler */
 app.use(errorHandler);
