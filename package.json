@@ -4,7 +4,7 @@
   "description": "ACC assignment-3 based on job portal with respect genuine one",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "repository": "https://github.com/hasibulislam999/job-portal-assignment",
   "author": "Hasibul Islam",
@@ -21,6 +21,5 @@
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.8.0",
     "validator": "^13.7.0"
-  },
-  "devDependencies": {}
+  }
 }
